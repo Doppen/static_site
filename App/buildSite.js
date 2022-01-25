@@ -4,7 +4,7 @@ const path = require("path");
 let sass = require("sass");
 let markdown = require("markdown").markdown;
 
-const sitedata = require("./data/site.json");
+const sitedata = require("../data/site.json");
 const outputDir = "_dist/";
 const outputVersion = 1;
 const partialsDir = "./src/components";
@@ -18,6 +18,7 @@ function build() {
     //.then(markdown2Html)
     .then(registerPartials)
     //.then(createContentList)
+    .then(generateNavigationList)
     .then(() => {
       createSite();
       fs.copySync("src/images/", outputDir + "images/");
@@ -152,6 +153,33 @@ function createContentList() {
   pages.shift();
   sitedata[0].pagesList = pages;
 }
+
+
+function generateNavigationList() {
+  let list = '';
+  let pageLevel = 1
+  sitedata.forEach((item, i) => {
+    if (item.page_level > pageLevel ) {
+      list+= '<li><ul>'
+    }
+    if (item.page_level < pageLevel ) {
+      list+= '</ul></li>'
+    }
+    list+= '<li><a href="'+item.file_name+'">'+item.title+'</a></li>';
+
+    pageLevel = item.page_level;
+  });
+
+  for (var i = 0; i < pageLevel-1; i++) {
+    list+= '</ul></li>';
+  }
+
+  let out = '<ul>'+list+'</ul>'
+
+  createFile('src/components/navigation.html', out)
+
+}
+
 
 
 // generate files

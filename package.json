@@ -4,17 +4,16 @@
   "description": "",
   "main": "buildSite.js",
   "scripts": {
-    "build": "node buildSite.js",
-    "server": "node app.js",
-    "nodemon": "nodemon -e js,scss,html,md -x",
-    "browsync": "browser-sync start --server '_dist' --files './src' ",
-    "start2": "npm run build & npm run nodemon & npm run browsync",
-    "start": "npm run build  & npm run nodemon  & npm run server"
+    "get": "node App/getj.js",
+    "build": "node App/buildSite.js",
+    "prestart": "npm run get",
+    "start": "npm run build "
   },
   "nodemonConfig": {
     "ignore": [
       "_dist/*",
-      "src/components/markdown/*"
+      "src/components/markdown/*",
+      "src/components/navigation.html"
     ]
   },
   "keywords": [],
