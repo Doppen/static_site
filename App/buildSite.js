@@ -15,10 +15,11 @@ function build() {
   // clear output folder, then build site
   fs.remove(outputDir)
     .then(createFolder)
-    //.then(markdown2Html)
+    .then(addPageBreadCrumb)
+    .then(addPageNavigationList)
+    .then(markdown2Html)
     .then(registerPartials)
-    //.then(createContentList)
-    .then(generateNavigationList)
+
     .then(() => {
       createSite();
       fs.copySync("src/images/", outputDir + "images/");
@@ -37,40 +38,26 @@ function createSite() {
 }
 
 // // convert markdown files to HTML components
-// function markdown2Html() {
-//   return new Promise((resolve, reject) => {
-//     let fileAmount = 0
-//     fs.readdir('markdown', (err, files) => {
-//       fileAmount = files.length
-//         files.forEach((file, i) => {
-//             fs.readFile('markdown/'+file, 'utf-8', function(error, source){
-//               let fileContent = source
-//               fileContent = replace(fileContent, '§cc', '"> </span>')
-//               fileContent = replace(fileContent, '§c', '<span class="clColorSample" style="background-color:')
-//               fileContent = replace(fileContent, '{{>', '@@@@')
-//               fileContent = markdown.toHTML(fileContent)
-//               fileContent = replace(fileContent, '@@@@', '<div class="showComps"><div class="showComponents">{{>')
-//               fileContent = replace(fileContent, '}}', '}}</div><div class="showComponentsCode"></div></div>')
-//               fileContent = replace(fileContent, '&gt;', '>')
-//               fileContent = replace(fileContent, '&lt;', '<')
-//               fileContent = replace(fileContent, '&quot;', '"')
-//               createFile(partialsDir+'/markdown/'+file, fileContent)
-//               if (fileAmount == (i+1)) {
-//                 resolve('markdown');
-//               }
-//             });
-//           })
-//         })
-//     });
+function markdown2Html() {
+  return new Promise((resolve, reject) => {
+    let fileAmount = 0
+    fs.readdir('markdown', (err, files) => {
+      fileAmount = files.length
+        files.forEach((file, i) => {
+            fs.readFile('markdown/'+file, 'utf-8', function(error, source){
+              let fileContent = source
+              fileContent = markdown.toHTML(fileContent)
+              file = file.replace(".md", ".html");
 
-// function replace(str, orig, replacement) {
-//   let find = '&gt;';
-//   let rgx = new RegExp(orig, "g");
-//   let out = str.replace(rgx, replacement);
-//   return out
-// }
-
-// }
+              createFile(partialsDir+'/markdown/'+file, fileContent)
+              if (fileAmount == (i+1)) {
+                resolve('markdown');
+              }
+            });
+          })
+        })
+    });
+}
 
 // register partials (components) and generate site files
 function registerPartials() {
@@ -110,6 +97,7 @@ function registerPartials() {
         });
       });
     };
+
 
     walk(partialsDir, function (err, results) {
       if (err) throw err;
@@ -155,29 +143,66 @@ function createContentList() {
 }
 
 
-function generateNavigationList() {
-  let list = '';
-  let pageLevel = 1
-  sitedata.forEach((item, i) => {
-    if (item.page_level > pageLevel ) {
-      list+= '<li><ul>'
-    }
-    if (item.page_level < pageLevel ) {
-      list+= '</ul></li>'
-    }
-    list+= '<li><a href="'+item.file_name+'">'+item.title+'</a></li>';
 
-    pageLevel = item.page_level;
+
+
+function addPageBreadCrumb() {
+  let parentPageName = '';
+  let parentPageLink = '';
+  let parentPageLevel = 1;
+
+  sitedata.forEach((page, i) => {
+    let breadCrumb = '';
+    let currPage = '<span>'+page.title+'</span>'
+
+    if (page.page_level == 1 ) {
+      // if top level
+      breadCrumb = currPage;
+      parentPageName = page.title
+      parentPageLink = page.file_name
+
+    } else if (page.page_level = 2)  {
+      // if subpage
+      breadCrumb = '<a href="'+parentPageLink+'">'+parentPageName+'</a>'+currPage;
+    }
+    sitedata[i].breadcrumb = breadCrumb;
   });
+}
 
-  for (var i = 0; i < pageLevel-1; i++) {
-    list+= '</ul></li>';
-  }
 
-  let out = '<ul>'+list+'</ul>'
 
-  createFile('src/components/navigation.html', out)
 
+ // create
+function addPageNavigationList() {
+  // each page
+  sitedata.forEach((page, i) => {
+    // navigation list
+    let list = '';
+    let pageLevel = 1
+
+    sitedata.forEach((item, j) => {
+      let currClass = '';
+      if (i == j) {
+        currClass = ' class="currPage"';
+      }
+      if (item.page_level > pageLevel ) {
+        list+= '<ul>'
+      }
+      if (item.page_level < pageLevel ) {
+        list+= '</ul>'
+      }
+      list+= '<li'+currClass+'><a href="'+item.file_name+'">'+item.title+'</a></li>';
+
+      pageLevel = item.page_level;
+    });
+
+    for (var k = 0; k < pageLevel-1; k++) {
+      list+= '</ul>';
+    }
+
+    let nav = '<ul>'+list+'</ul>';
+    sitedata[i].navigation_list = nav;
+  });
 }
 
 

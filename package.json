@@ -4,16 +4,15 @@
   "description": "",
   "main": "buildSite.js",
   "scripts": {
-    "get": "node App/getj.js",
-    "build": "node App/buildSite.js",
+    "get": "node app/getj.js",
+    "build": "node app/buildSite.js",
     "prestart": "npm run get",
     "start": "npm run build "
   },
   "nodemonConfig": {
     "ignore": [
       "_dist/*",
-      "src/components/markdown/*",
-      "src/components/navigation.html"
+      "src/components/markdown/*"
     ]
   },
   "keywords": [],
