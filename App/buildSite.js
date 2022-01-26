@@ -17,6 +17,7 @@ function build() {
     .then(createFolder)
     .then(addPageBreadCrumb)
     .then(addPageNavigationList)
+    .then(addPageSubNavigationList)
     .then(markdown2Html)
     .then(registerPartials)
 
@@ -163,12 +164,11 @@ function addPageBreadCrumb() {
 
     } else if (page.page_level = 2)  {
       // if subpage
-      breadCrumb = '<a href="'+parentPageLink+'">'+parentPageName+'</a>'+currPage;
+      breadCrumb = '<a href="'+parentPageLink+'">'+parentPageName+'</a> '+currPage;
     }
     sitedata[i].breadcrumb = breadCrumb;
   });
 }
-
 
 
 
@@ -180,30 +180,72 @@ function addPageNavigationList() {
     let list = '';
     let pageLevel = 1
 
-    sitedata.forEach((item, j) => {
+    sitedata.forEach((item, j, sitedata) => {
       let currClass = '';
+      let genId = uniqueGenerator();
       if (i == j) {
         currClass = ' class="currPage"';
       }
+      // if start sublevel
       if (item.page_level > pageLevel ) {
-        list+= '<ul>'
+        //list+= '<button onclick="subNav(\''+genId+'\')">></button>'
+        list+= '<ul id="'+genId+'">'
       }
+      // if end sublevel
       if (item.page_level < pageLevel ) {
-        list+= '</ul>'
+        list+= '</ul></li>'
       }
-      list+= '<li'+currClass+'><a href="'+item.file_name+'">'+item.title+'</a></li>';
+      // display link and name
+      list+= '<li'+currClass+'><a href="'+item.file_name+'">'+item.title+'</a>';
+
+      if (!Object.is(sitedata.length - 1, j)) {
+        if (sitedata[j+1].page_level == pageLevel ) {
+          list+= '</li>';
+        }
+      }
 
       pageLevel = item.page_level;
     });
 
     for (var k = 0; k < pageLevel-1; k++) {
-      list+= '</ul>';
+      list+= '</ul></li>';
     }
 
     let nav = '<ul>'+list+'</ul>';
     sitedata[i].navigation_list = nav;
   });
 }
+
+
+function addPageSubNavigationList() {
+  let tempArr = [];
+  let tempUl = '';
+
+  sitedata.slice().reverse().forEach((page, i) => {
+
+    if (page.page_level == 2) {
+      tempUl = '<li><a href="'+page.file_name+'">'+page.title+'</a></li>'+tempUl;
+      tempArr.push(sitedata.length - i)
+
+    }
+    if (page.page_level == 1) {
+      tempArr.push((sitedata.length-i));
+      tempArr.forEach((id, j) => {
+        let tempUl2
+
+        tempUl2 = tempUl.replace('<li><a href="'+sitedata[id-1].file_name+'">', '<li class="currPage"><a href="'+sitedata[id-1].file_name+'">');
+
+        sitedata[id-1].navigationSub_list = '<ul>'+tempUl2+'</ul>';
+      });
+
+      tempUl = '';
+      tempArr = [];
+    }
+
+  })
+
+}
+
 
 
 
@@ -234,4 +276,11 @@ function createFolder() {
   fs.mkdirSync(outputDir);
   fs.mkdirSync(outputDir + "/css");
   fs.mkdirSync(outputDir + "/css/v" + outputVersion + "/");
+}
+
+function uniqueGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4());
 }

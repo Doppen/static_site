@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{title}}</title>
+    <title>{{title}} | Digital Infrastructure</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/v1/style.css" />
-    <link rel="shortcut icon" href="images/favicon/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon/favicon.jpg" />
+    <script type="text/javascript">
+    function subNav(id){
+      document.getElementById(id).style.display = 'flex';
+    }
+    </script>
   </head>
   <body>
-    <div>Breadcrumb: {{{breadcrumb}}}</div>
-    <h1>{{title}}</h1>
 
-    <div>Navigation: {{{navigation_list}}}</div>
-    <div>Content: {{> (lookup . 'markdown_file') }}</div>
+    <div class="tempHeaderLayout">
+      <header>
+        <img src="images/logo-knaw-humanities-cluster.png" alt="" class="tempLogo">
+        <nav class="tempHeaderNav">{{{navigation_list}}}</nav>
+      </header>
+
+      <div class="tempHeaderLayoutSplit">
+        <aside>
+          <nav class="tempHeaderNavSub">{{{navigationSub_list}}}</nav>
+        </aside>
+        <main>
+          <div class="tempBreadcrumb"><a href="index.html">Home</a> {{{breadcrumb}}}</div>
+          <h1>{{title}}</h1>
+          {{> (lookup . 'markdown_file') }}</main>
+
+      </div>
+    </div>
+
 
   </body>
 </html>

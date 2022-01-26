@@ -2,12 +2,14 @@
   "name": "Simple site builder",
   "version": "1.0.0",
   "description": "",
-  "main": "buildSite.js",
+  "main": "app/buildSite.js",
   "scripts": {
     "get": "node app/getj.js",
     "build": "node app/buildSite.js",
+    "nodemon": "nodemon -e js,scss,html,md -x npm run build",
     "prestart": "npm run get",
-    "start": "npm run build "
+    "start": "npm run build ",
+    "poststart": "npm run nodemon"
   },
   "nodemonConfig": {
     "ignore": [

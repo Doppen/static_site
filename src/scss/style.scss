@@ -1,8 +1,8 @@
-body {
-  background-color: hsl(60, 42%, 95%);
-}
+@use 'abstracts' as *;
+@use 'basics/normalise';
+@use 'basics/pageDefault';
+@use 'basics/typo';
+@use 'basics/colors';
 
-.currPage {
-  color: rgb(162, 36, 168);
-  border: 2px solid rgb(41, 191, 186)
-}
+
+@use 'temp';

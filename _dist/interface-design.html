@@ -1,20 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Interface Design</title>
+    <title>Interface Design | Digital Infrastructure</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/v1/style.css" />
-    <link rel="shortcut icon" href="images/favicon/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon/favicon.jpg" />
+    <script type="text/javascript">
+    function subNav(id){
+      document.getElementById(id).style.display = 'flex';
+    }
+    </script>
   </head>
   <body>
-    <div>Breadcrumb: <a href="expertise.html">Expertise</a><span>Interface Design</span></div>
-    <h1>Interface Design</h1>
 
-    <div>Navigation: <ul><li><a href="index.html">Home</a></li><li><a href="expertise.html">Expertise</a></li><ul><li><a href="text-analysis.html">Text Analysis</a></li><li><a href="structured-data.html">Structured Data</a></li><li><a href="computer-vision.html">Computer Vision</a></li><li><a href="spatial-computing.html">Spatial Computing</a></li><li class="currPage"><a href="interface-design.html">Interface Design</a></li><li><a href="cloud-computing.html">Cloud Computing</a></li></ul><li><a href="activities.html">Activities</a></li><ul><li><a href="research-projects.html">Research Projects</a></li><li><a href="infrastructure-projects.html">Infrastructure Projects</a></li><li><a href="sustainability.html">Sustainability</a></li><li><a href="software---datasets.html">Software & Datasets</a></li><li><a href="working-with-di.html">Working with DI</a></li></ul><li><a href="partners.html">Partners</a></li><ul><li><a href="knaw-research-institutes.html">KNAW Research Institutes</a></li><li><a href="nl-lab---dhlab.html">NL-Lab & DHLab</a></li><li><a href="cultural-ai-lab.html">Cultural AI Lab</a></li><li><a href="external-partners.html">External Partners</a></li></ul><li><a href="about.html">About</a></li><ul><li><a href="mission.html">Mission</a></li><li><a href="staff.html">Staff</a></li><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul></ul></div>
-    <div>Content: <h2>Heading two</h2>
+    <div class="tempHeaderLayout">
+      <header>
+        <img src="images/logo-knaw-humanities-cluster.png" alt="" class="tempLogo">
+        <nav class="tempHeaderNav"><ul><li><a href="index.html">Home</a></li><li><a href="text-analysis.html">Expertise</a><ul id="e16f017b"><li><a href="text-analysis.html">Text Analysis</a><li><a href="structured-data.html">Structured Data</a></li><li><a href="computer-vision.html">Computer Vision</a></li><li><a href="spatial-computing.html">Spatial Computing</a></li><li class="currPage"><a href="interface-design.html">Interface Design</a></li><li><a href="cloud-computing.html">Cloud Computing</a></ul></li><li><a href="research-projects.html">Activities</a></li><ul id="e73c8630"><li><a href="research-projects.html">Research Projects</a><li><a href="infrastructure-projects.html">Infrastructure Projects</a></li><li><a href="sustainability.html">Sustainability</a></li><li><a href="software---datasets.html">Software & Datasets</a></li><li><a href="working-with-di.html">Working with DI</a></ul></li><li><a href="knaw-research-institutes.html">Partners</a></li><ul id="bfac401a"><li><a href="knaw-research-institutes.html">KNAW Research Institutes</a><li><a href="nl-lab---dhlab.html">NL-Lab & DHLab</a></li><li><a href="cultural-ai-lab.html">Cultural AI Lab</a></li><li><a href="external-partners.html">External Partners</a></ul></li><li><a href="mission.html">About</a></li><ul id="9044d93f"><li><a href="mission.html">Mission</a><li><a href="staff.html">Staff</a></li><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></ul></li></ul></nav>
+      </header>
 
-<p>this is the content of the markdown file.</p></div>
+      <div class="tempHeaderLayoutSplit">
+        <aside>
+          <nav class="tempHeaderNavSub"><ul><li><a href="text-analysis.html">Text Analysis</a></li><li><a href="structured-data.html">Structured Data</a></li><li><a href="computer-vision.html">Computer Vision</a></li><li><a href="spatial-computing.html">Spatial Computing</a></li><li class="currPage"><a href="interface-design.html">Interface Design</a></li><li><a href="cloud-computing.html">Cloud Computing</a></li></ul></nav>
+        </aside>
+        <main>
+          <div class="tempBreadcrumb"><a href="index.html">Home</a> <a href="text-analysis.html">Expertise</a> <span>Interface Design</span></div>
+          <h1>Interface Design</h1>
+          <p>Humanities data is often complex and hard to interpret. Our team focuses on making this data accessible and understandable. The output of the KNAW Humanties Cluster must be accessible to many people, not just to researchers. We create tools that places data in the right context so that they are better understood and easy to use. And we strive to make our interfaces inclusive, device-agnostic and long-lasting so that these can be accessible long into the future. The team specialises in user research, web usability, interface design, web publication, data visualisation and project branding.</p>
+
+<h2>Team</h2>
+
+<ul><li>Bas Doppen (design officer) (<a href="https://pure.knaw.nl/portal/en/persons/bas-doppen(660ae770-429c-4310-83c9-2ea1f2e4bc80)/publications.html">Publications</a>)</li></ul>
+
+<h2>Projects</h2>
+
+<ul><li><a href="https://www.goldenagents.org/">Golden Agents</a> will connect scattered heterogeneous sources (new and existing) about creative industries in the Golden Age via linked open data.</li><li><a href="https://prizepapers.huygens.knaw.nl/">Dutch Prize Papers</a> makes 144.000 digitised pages from highly varied documents accessible to researchers and interested parties in a structured research environment.</li><li><a href="https://timbuctoo.huygens.knaw.nl/">Timbuctoo</a> is specifically designed for academic research in the Arts and Humanities, which often yields complex and heterogeneous data.</li><li><a href="http://rooswijk.huygens.knaw.nl/">Rooswijk</a> is a virtual exhibition about the VOC ship of the same name that perished in 1740 off the English coast.</li></ul>
+
+<h2>Code Repository</h2>
+
+<p><a href="https://github.com/knaw-huc/">GitHub</a></p>
+
+<h2>Contact</h2>
+
+<p><a href="mailto:bas.doppen@di.huc.knaw.nl">bas.doppen@di.huc.knaw.nl</a></p></main>
+
+      </div>
+    </div>
+
 
   </body>
 </html>
