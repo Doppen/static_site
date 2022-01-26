@@ -1,0 +1,33 @@
+{{> html_header}}
+
+    <div class="tempHeaderLayout">
+      {{> huc_header_nav}}
+
+        <main>
+          <div class="tempHero" style="background-image: url(images/{{feautred_img}});">
+
+            <div class="tempHeroInner">
+              <div>KNAW Humanities Cluster</div>
+              <h1>Digital Infrastructure</h1>
+              <div>We build sustainable infrastructure to foster innovative research connecting people, data, and collections.</div>
+            </div>
+
+
+
+          </div>
+
+
+
+        </main>
+        <h2>Featured projects</h2>
+        <div class="tempCardsFp">
+
+          {{#each featuredProjects}}
+            {{> home-fp}}
+          {{/each}}
+
+        </div>
+
+    </div>
+
+{{> html_footer}}

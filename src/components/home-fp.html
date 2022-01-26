@@ -1,0 +1,6 @@
+<div>
+  <img src="images/{{ feautred_img }}" alt="">
+  <div>{{ news_section }}</div>
+  <h3>{{ title }}</h3>
+  {{> (lookup . 'markdown_file') }}
+</div>

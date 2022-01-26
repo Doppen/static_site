@@ -1,0 +1,20 @@
+{{> html_header}}
+
+    <div class="tempHeaderLayout">
+      {{> huc_header_nav}}
+
+
+      <div class="tempHeaderLayoutSplit">
+        <aside>
+          <nav class="tempHeaderNavSub">{{{navigationSub_list}}}</nav>
+        </aside>
+        <main>
+          <div class="tempBreadcrumb"><a href="index.html">Home</a> {{{breadcrumb}}}</div>
+          <h1>{{title}}</h1>
+          {{> (lookup . 'markdown_file') }}</main>
+
+      </div>
+    </div>
+
+
+{{> html_footer}}
