@@ -2,7 +2,7 @@ We support textual research on four levels. The first one is close reading and m
 
 We work on software that presents, searches, annotates and analyses text. Our goal is to create a common pipeline, enabling scholars and engineers to ingest, process and publish textual data – be it XML, raw text, or scans – in a common distributed and modular infrastructure adaptable to the different scholarly domains at the HuC and outside.
 
-![This is a map](images/map_v2-1024x614.jpg)
+![This is a map](images/map_v2-1024x614.jpg?nf_resize=fit&w=300)
 
 Text analysis is a large part of the responsibilities of our team. The focus lies on tools for linguistic, syntactic and semantic analysis, NER, as well as other information extraction algorithms. The total suite of tooling should automatically generate a context of metadata and annotations around a text, and enable users to confirm, reject or correct these annotations. The work of the team in this field interacts closely with more experimental development in R&D, at the DHLab and various research groups in computational science and computational linguistics. Prototypes from these groups can be adopted by the team if they can be improved to a certain level of maturity.
 
