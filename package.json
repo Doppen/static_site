@@ -4,8 +4,8 @@
   "description": "",
   "main": "app/buildSite.js",
   "scripts": {
-    "get": "node app/getj.js",
-    "build": "node app/buildSite.js",
+    "get": "node App/getj.js",
+    "build": "node App/buildSite.js",
     "nodemon": "nodemon -e js,scss,html,md -x npm run build",
     "prestart": "npm run get",
     "start": "npm run build ",
