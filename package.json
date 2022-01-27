@@ -9,7 +9,9 @@
     "nodemon": "nodemon -e js,scss,html,md -x npm run build",
     "prestart": "npm run get",
     "start": "npm run build ",
-    "poststart": "npm run nodemon"
+    "poststart": "npm run nodemon",
+    "predev": "npm run get",
+    "dev": "npm run build ",
   },
   "nodemonConfig": {
     "ignore": [
