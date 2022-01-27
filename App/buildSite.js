@@ -269,7 +269,6 @@ function createAltPageLists() {
 
 
 
-
 // generate files
 function generateHtml() {
   sitedata.forEach((item) => {
