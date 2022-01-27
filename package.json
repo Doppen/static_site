@@ -11,7 +11,7 @@
     "start": "npm run build ",
     "poststart": "npm run nodemon",
     "predev": "npm run get",
-    "dev": "npm run build ",
+    "dev": "npm run build "
   },
   "nodemonConfig": {
     "ignore": [
