@@ -50,6 +50,7 @@ function markdown2Html() {
         fs.readFile(markdownDir + file, 'utf-8', function(error, source) {
           let fileContent = source
           fileContent = markdown.toHTML(fileContent)
+          fileContent = handleHtmlDom(fileContent)
           file = file.replace(".md", ".html");
 
           createFile(partialsDir + '/markdown/' + file, fileContent)
@@ -291,9 +292,7 @@ function createAltPageLists() {
 // generate files
 function generateHtml() {
   sitedata.forEach((item) => {
-    fs.readFile("src/templates/" + item.template, "utf-8", function(
-      error,
-      source
+    fs.readFile("src/templates/" + item.template, "utf-8", function( error, source
     ) {
       var template = handlebars.compile(source);
       var html = template(item);
@@ -327,4 +326,10 @@ function uniqueGenerator() {
 
 function onlyUniqueInArr(value, index, self) {
   return self.indexOf(value) === index;
+}
+
+
+function handleHtmlDom(fileContent) {
+
+  return fileContent;
 }
