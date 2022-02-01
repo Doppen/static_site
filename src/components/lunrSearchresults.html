@@ -1,0 +1,13 @@
+<div id="searchForm" class="searchform">
+      <input type="text" name="searchTerm" id="searchTerm">
+      <button type="button" name="button" onclick="ShowResults()">Zoeken</button>
+</div>
+<div id="results"></div>
+
+<script src="js/elasticlunr.min.js" charset="utf-8"></script>
+<script src="js/searchResults.js" charset="utf-8"></script>
+<script src="js/search_index.js" charset="utf-8"></script>
+<script type="text/javascript">
+  // load the index
+  var index = elasticlunr.Index.load(indexDump);
+</script>

@@ -5,6 +5,7 @@
   "main": "app/buildSite.js",
   "scripts": {
     "get": "node App/getj.js",
+    "lunrIndex": "node App/buildLunrIndex.js",
     "build": "node App/buildSite.js",
     "nodemon": "nodemon -e js,scss,html,md -x npm run build",
     "prestart": "npm run get",

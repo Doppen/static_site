@@ -1,0 +1,22 @@
+{{> html_header}}
+
+
+<div class="temp01">
+  <img id="logo" src="images/logo-knaw-humanities-cluster.png" alt="" class="tempLogo01">
+  <nav id="mainNav" class="navHideNestedSubNav navInlineList navNoList">{{{navigation_list}}}</nav>
+  <nav id="subNav" class="navNoList">{{{navigationSub_list}}}</nav>
+
+
+
+  <div id="breadCrumb" class="tempBreadcrumb"><a href="index.html">Home</a> {{{breadcrumb}}}</div>
+  <main id="content" class="read">
+    <h1>{{title}}</h1>
+
+    {{> (lookup . 'markdown_file') }}
+  </main>
+
+</div>
+
+
+
+{{> html_footer}}

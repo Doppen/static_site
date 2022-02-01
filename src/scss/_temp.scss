@@ -25,6 +25,9 @@
 }
 
 
+
+
+
 .tempHeaderNavSub {
   ul {
     margin: 0 0 0 0;
@@ -90,6 +93,10 @@ header {
 
   >*::after {
     content: " | ";
+  }
+
+  >*:last-child::after {
+    content: "";
   }
 }
 

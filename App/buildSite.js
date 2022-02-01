@@ -6,6 +6,7 @@ let markdown = require("markdown").markdown;
 
 const sitedata = require("../data/site.json");
 const outputDir = "_dist/";
+const markdownDir = "content/markdown/";
 const outputVersion = 1;
 const partialsDir = "./src/components";
 
@@ -43,10 +44,10 @@ function createSite() {
 function markdown2Html() {
   return new Promise((resolve, reject) => {
     let fileAmount = 0
-    fs.readdir('markdown', (err, files) => {
+    fs.readdir(markdownDir, (err, files) => {
       fileAmount = files.length
       files.forEach((file, i) => {
-        fs.readFile('markdown/' + file, 'utf-8', function(error, source) {
+        fs.readFile(markdownDir + file, 'utf-8', function(error, source) {
           let fileContent = source
           fileContent = markdown.toHTML(fileContent)
           file = file.replace(".md", ".html");
@@ -255,15 +256,33 @@ function addPageSubNavigationList() {
 
 
 function createAltPageLists() {
-  let fpList = []
+  let catList = []
+  let pageList = []
 
+  // collect all categories
   sitedata.forEach((item) => {
-    if (item.type == 'featured-project') {
-      fpList.push(item)
+    if (item.type != 'page') {
+      catList.push(item.type)
     }
   });
+   catList = catList.filter((v, i, a) => a.indexOf(v) === i);
 
-  sitedata[0].featuredProjects = fpList;
+
+   // create lists with pages
+   catList.forEach((cat, i) => {
+     sitedata.forEach((item) => {
+       if (item.type == cat) {
+         pageList.push(item)
+       }
+     });
+
+     // add the list to each page
+     sitedata.forEach((page, j) => {
+         sitedata[j][cat]= pageList;
+     });
+     pageList = [];
+
+   });
 
 }
 
@@ -303,4 +322,9 @@ function uniqueGenerator() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   };
   return (S4() + S4());
+}
+
+
+function onlyUniqueInArr(value, index, self) {
+  return self.indexOf(value) === index;
 }

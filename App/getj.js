@@ -80,6 +80,8 @@ function createNewJson(obj) {
       // cell
       if (item2 !== null) {
         //console.log(item2.v)
+
+
         rowObject[objectNames[rowIndex]] = item2.v
 
       } else {
@@ -97,7 +99,6 @@ function createNewJson(obj) {
   }
   return jOut;
 }
-
 
 
 function createFile(fileName, content) {
