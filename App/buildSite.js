@@ -330,6 +330,5 @@ function onlyUniqueInArr(value, index, self) {
 
 
 function handleHtmlDom(fileContent) {
-
   return fileContent;
 }
