@@ -2,3 +2,4 @@
 node_modules/
 .ftpconfig
 config.json
+search/

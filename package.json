@@ -4,11 +4,12 @@
   "description": "",
   "main": "app/buildSite.js",
   "scripts": {
-    "get": "node App/getj.js",
+    "getJson": "node App/getj.js",
+    "getMd": "node App/structureFromMd.js",
     "lunrIndex": "node App/buildLunrIndex.js",
     "build": "node App/buildSite.js",
     "nodemon": "nodemon -e js,scss,html,md -x npm run build",
-    "prestart": "npm run get",
+    "prestart": "npm run getMd",
     "start": "npm run build ",
     "poststart": "npm run nodemon",
     "predev": "npm run get",
@@ -26,6 +27,7 @@
   "dependencies": {
     "fs-extra": "^10.0.0",
     "handlebars": "^4.7.7",
+    "jsdom": "^19.0.0",
     "markdown": "^0.5.0",
     "nodemon": "^2.0.15",
     "sass": "^1.43.4"

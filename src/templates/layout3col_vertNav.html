@@ -1,0 +1,23 @@
+{{> html_header}}
+
+<div class="layout_3col_vertNav">
+
+  <div id="colNav">
+    <img id="logo" src="images/logo-knaw-humanities-cluster.png" alt="" class="tempLogo01">
+    <nav id="mainNav" class="navNoList">{{{navigation_list}}}</nav>
+  </div>
+
+  <div id="colContent">
+    <div id="breadCrumb" class="tempBreadcrumb"><a href="index.html">Home</a> {{{breadcrumb}}}</div>
+    <main id="content" class="read">
+      <h1>{{title}}</h1>
+
+      {{{ htmlContent }}}
+    </main>
+  </div>
+
+  <aside id="colAside">Aside</aside>
+
+</div>
+
+{{> html_footer}}
