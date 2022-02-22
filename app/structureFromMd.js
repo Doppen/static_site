@@ -7,12 +7,12 @@ const config = require("../config.json");
 
 let siteData = []
 
-fs.readdir(config.markdownFolder, (err, files) => {
+fs.readdir(config.dirMarkdown, (err, files) => {
   let filesAmount = files.length
 
   files.forEach((file, i) => {
     // each file
-    fs.readFile(config.markdownFolder + '/' + file, 'utf-8', function(error, source) {
+    fs.readFile(config.dirMarkdown + '/' + file, 'utf-8', function(error, source) {
 
 
       let fileExtention = file.substr(file.length - 3)
@@ -106,14 +106,11 @@ function validateData(siteDataIm) {
     let filename = siteData[i].title
     filename = filename.replaceAll(' ','-')
     filename = filename.replaceAll('&','')
-    //filename = filename.replaceAll('','')
-    //filename = filename.replaceAll('','')
     if (siteData[i].page_order == 10000) {
       siteData[i].file_name = 'index.html'
     } else {
       siteData[i].file_name = filename.toLowerCase()+'.html'
     }
-
   });
   return siteDataIm;
 }

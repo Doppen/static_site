@@ -7,32 +7,59 @@
     <link rel="stylesheet" href="css/v1/style.css" />
     <link rel="shortcut icon" href="images/favicon/favicon.jpg" />
     <script type="text/javascript">
-    function subNav(id){
-      document.getElementById(id).style.display = 'flex';
-    }
+      function subNav(id) {
+        document.getElementById(id).style.display = "flex";
+      }
     </script>
   </head>
   <body>
+    <a href="#main-content" class="skipToContent">Skip to content</a>
+  </body>
+</html>
 
 <div class="layout_3col_vertNav">
+  <div id="colNav" class="colNav">
+    <img
+      id="logo"
+      src="images/logo-knaw-humanities-cluster.png"
+      alt=""
+      class="tempLogo01"
+    />
 
-  <div id="colNav">
-    <img id="logo" src="images/logo-knaw-humanities-cluster.png" alt="" class="tempLogo01">
-    <nav id="mainNav" class="navNoList"><ul><li><a href="index.html">Home</a></li><li><a href="expertise.html">Expertise</a></li><li class=" navIsCurrentParent"><a href="activities.html">Activities</a><ul><li class=""><a href="research-projects.html">Research Projects</a></li><li class=""><a href="infrastructure-projects.html">Infrastructure Projects</a></li></ul></li><li><a href="about.html">About</a></li></ul></nav>
+    <div class="hideOnSmall">
+      <nav id="mainNav" class="navNoList"><ul><li><a href="index.html">Home</a></li><li class=" navIsCurrentParent"><a href="activities.html">Activities</a><ul><li class=""><a href="research-projects.html">Research Projects</a></li><li class=""><a href="infrastructure-projects.html">Infrastructure Projects</a></li></ul></li><li><a href="about.html">About</a></li></ul></nav>
+    </div>
   </div>
 
-  <div id="colContent">
-    <div id="breadCrumb" class="tempBreadcrumb"><a href="index.html">Home</a> <span>Activities</span></div>
-    <main id="content" class="read">
+  <div id="colContent" class="colContent centerContent">
+    <div id="breadCrumb" class="tempBreadcrumb">
+      <a href="index.html">Home</a> | <span>Activities</span>
+    </div>
+    <main id="main-content" class="read">
       <h1>Activities</h1>
 
       <p>We are responsible for the core infrastructure used throughout the department. Our core tasks are management of computing resources, long-term maintenance and development of our production platforms, and running software that is no longer under development. Our Team Lead is Mario Mieldijk.</p>  <p>The infrastructure in the KNAW Humanities Cluster consists of approximately 200 ‘virtual’ servers, 100 ‘physical’ servers, more than 1 Petabyte (1,000,000 GB) of digital storage and approximately 380 company-critical applications, websites, and web applications.</p>  <p>Team Concern Infrastructure is working on an infrastructure for research projects and collections, that is as stable, safe, and fast as possible. The team develops user-friendly systems so that functional managers can do as much as possible themselves. The team supplies and manages many of its resources via a PaaS (Platform as a Service). Some examples include Kubernetes, Docker, vmWare, and Database clusters. The team delivers, manages and optimizes business-critical applications and workflows such as Web hosting, Archive systems and Library systems. Applications whose further development has ended are maintained by our team. In addition, we perform important tasks in information security.</p>  <h2>Code Repository</h2>  <p><a href="https://github.com/knaw-huc/">GitHub</a></p>  <h2>Contact</h2>  <p><a href="mailto:concern-infrastructure@di.huc.knaw.nl">concern-infrastructure@di.huc.knaw.nl</a></p>
     </main>
   </div>
 
-  <aside id="colAside">Aside</aside>
-
+  <aside id="colAside" class="colAside">Aside</aside>
 </div>
+<button
+  type="button"
+  name="button"
+  class="hamburgerButton"
+  id="hamburger"
+  onclick="hamburger()"
+>
+  <img
+    src="images/icons/icon-hamburger.svg"
+    alt=""
+    class="hamburgerIcon"
+    id="hamburgerImg"
+  />
+</button>
+
+<script src="js/hamburger-menu.js" charset="utf-8"></script>
 
 </body>
 </html>

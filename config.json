@@ -3,7 +3,8 @@
     "id": "1AK4cBff4SDEzUVRKkd_-p-l1K3riRCZdns6XOEZe89A",
     "name": "site"
   }],
-  "markdownFolder": "./content2",
+  "dirContent": "./content2",
+  "dirMarkdown": "./content2/markdown",
   "defaults": [
     {
       "name": "template",

@@ -6,6 +6,7 @@ let markdown = require("markdown").markdown;
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
+const config = require("../config.json");
 const sitedata = require("../data/site.json");
 const outputDir = "_dist/";
 const markdownDir = "content/markdown/";
@@ -28,6 +29,7 @@ function build() {
     .then(() => {
       createSite();
       fs.copySync("src/images/", outputDir + "images/");
+      fs.copySync(config.dirContent+"/images/", outputDir + "images/");
       fs.copySync("src/js/", outputDir + "js/");
       //fs.copySync("data/", outputDir + "data/");
     })
@@ -159,7 +161,7 @@ function addPageBreadCrumb() {
 
   sitedata.forEach((page, i) => {
     let breadCrumb = '';
-    let currPage = '<span>' + page.title + '</span>'
+    let currPage = '| <span>' + page.title + '</span>'
 
     if (page.page_level == 1) {
       // if top level
@@ -169,7 +171,7 @@ function addPageBreadCrumb() {
 
     } else if (page.page_level = 2) {
       // if subpage
-      breadCrumb = '<a href="' + parentPageLink + '">' + parentPageName + '</a> ' + currPage;
+      breadCrumb = '| <a href="' + parentPageLink + '">' + parentPageName + '</a> ' + currPage;
     }
     sitedata[i].breadcrumb = breadCrumb;
   });

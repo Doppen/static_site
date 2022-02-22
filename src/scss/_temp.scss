@@ -91,13 +91,13 @@ header {
 .tempBreadcrumb {
   font-size: $fontSizeSmall;
 
-  >*::after {
-    content: " | ";
-  }
-
-  >*:last-child::after {
-    content: "";
-  }
+  // >*::after {
+  //   content: " | ";
+  // }
+  //
+  // >*:last-child::after {
+  //   content: "";
+  // }
 }
 
 .tempHero {

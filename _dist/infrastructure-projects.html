@@ -7,32 +7,59 @@
     <link rel="stylesheet" href="css/v1/style.css" />
     <link rel="shortcut icon" href="images/favicon/favicon.jpg" />
     <script type="text/javascript">
-    function subNav(id){
-      document.getElementById(id).style.display = 'flex';
-    }
+      function subNav(id) {
+        document.getElementById(id).style.display = "flex";
+      }
     </script>
   </head>
   <body>
+    <a href="#main-content" class="skipToContent">Skip to content</a>
+  </body>
+</html>
 
 <div class="layout_3col_vertNav">
+  <div id="colNav" class="colNav">
+    <img
+      id="logo"
+      src="images/logo-knaw-humanities-cluster.png"
+      alt=""
+      class="tempLogo01"
+    />
 
-  <div id="colNav">
-    <img id="logo" src="images/logo-knaw-humanities-cluster.png" alt="" class="tempLogo01">
-    <nav id="mainNav" class="navNoList"><ul><li><a href="index.html">Home</a></li><li><a href="expertise.html">Expertise</a></li><li class=" navIsCurrentParent"><a href="activities.html">Activities</a><ul><li class=""><a href="research-projects.html">Research Projects</a></li><li class=" navIsCurrentPage"><a href="infrastructure-projects.html">Infrastructure Projects</a></li></ul></li><li><a href="about.html">About</a></li></ul></nav>
+    <div class="hideOnSmall">
+      <nav id="mainNav" class="navNoList"><ul><li><a href="index.html">Home</a></li><li class=" navIsCurrentParent"><a href="activities.html">Activities</a><ul><li class=""><a href="research-projects.html">Research Projects</a></li><li class=" navIsCurrentPage"><a href="infrastructure-projects.html">Infrastructure Projects</a></li></ul></li><li><a href="about.html">About</a></li></ul></nav>
+    </div>
   </div>
 
-  <div id="colContent">
-    <div id="breadCrumb" class="tempBreadcrumb"><a href="index.html">Home</a> <a href="activities.html">Activities</a> <span>Infrastructure Projects</span></div>
-    <main id="content" class="read">
+  <div id="colContent" class="colContent centerContent">
+    <div id="breadCrumb" class="tempBreadcrumb">
+      <a href="index.html">Home</a> | <a href="activities.html">Activities</a> | <span>Infrastructure Projects</span>
+    </div>
+    <main id="main-content" class="read">
       <h1>Infrastructure Projects</h1>
 
       <p>We process large volumes of digital photographs and page images and generate new data from them to address tasks such as text recognition, handwriting transcription, author identification, dating, localization, and the analysis of paper and manuscripts. Our Team Lead is Rutger van Koert.</p>  <h2>Team</h2>  <ul><li>Martijn Maas (<a href="https://pure.knaw.nl/portal/en/persons/m-maas(42f5a5fc-f196-4aa4-91e8-09b059e1891b).html">Publications</a>)</li><li>Rutger van Koert (Team Lead) (<a href="https://pure.knaw.nl/portal/en/persons/rutger-koert-van(47bbce92-fb7c-4308-a3bb-dd2cb43fd4af)/publications.html">Publications</a>)</li></ul>  <h1>Sample Projects</h1>  <ul><li><a href="https://www.huygens.knaw.nl/projecten/republic-de-online-toegang-tot-de-resoluties-van-de-staten-generaal-1576-1796/">REPUBLIC </a>will provide access to the resolutions of the States General (1576-1796): more than half a million pages with handwritten and printed political information.</li><li><a href="https://www.huygens.knaw.nl/projecten/digital-forensics-for-historical-documents/">Digital Forensics </a>explores new ways to use digital image analysis to analyse historical script samples.</li><li><a href="https://www.huygens.knaw.nl/projecten/dutch-prize-papers/">Dutch Prize Papers</a> makes 144.000 digitised pages from highly varied documents accessible to researchers and interested parties in a structured research environment.</li><li><a href="https://www.oorlogsbronnen.nl/triado">TRIADO </a>develops an efficient and effective methodology for converting large amounts of unstructured, analogue data from archive collections into usable digital research data.</li></ul>  <h2>Read more</h2>  <p>Rutger van Koert, Hannah Busch and Mariken Teeuwen, <a href="http://2019.dhbenelux.org/wp-content/uploads/sites/13/2019/08/DH_Benelux_2019_paper_53.pdf"><em>Cutting up medieval manuscripts (digitally) to trace their origins</em></a></p>  <h2>Code Repositories</h2>  <p><a href="https://github.com/knaw-huc/">GitHub</a></p>  <h2>Contact</h2>  <p><a href="mailto:rutger.van.koert@di.huc.knaw.nl">rutger.van.koert@di.huc.knaw.nl</a></p>
     </main>
   </div>
 
-  <aside id="colAside">Aside</aside>
-
+  <aside id="colAside" class="colAside">Aside</aside>
 </div>
+<button
+  type="button"
+  name="button"
+  class="hamburgerButton"
+  id="hamburger"
+  onclick="hamburger()"
+>
+  <img
+    src="images/icons/icon-hamburger.svg"
+    alt=""
+    class="hamburgerIcon"
+    id="hamburgerImg"
+  />
+</button>
+
+<script src="js/hamburger-menu.js" charset="utf-8"></script>
 
 </body>
 </html>
