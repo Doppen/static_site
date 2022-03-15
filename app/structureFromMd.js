@@ -7,6 +7,7 @@ const config = require("../config.json");
 
 let siteData = []
 
+// go through all files in markdown folder and create structure based on filenames
 fs.readdir(config.dirMarkdown, (err, files) => {
   let filesAmount = files.length
 
@@ -49,6 +50,9 @@ fs.readdir(config.dirMarkdown, (err, files) => {
             case '':
               if (mdFileRow == '---') {
                 status = 'inMeta'
+              } else {
+                status = 'inTxt'
+                text += mdFileRow + '\n';
               }
               break;
 
@@ -82,6 +86,7 @@ fs.readdir(config.dirMarkdown, (err, files) => {
 
       }
 
+      // reorder + create files
       if (filesAmount == i + 1) {
         siteData = sortByKey(siteData, 'page_order')
         siteData = validateData(siteData)

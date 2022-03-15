@@ -1,5 +1,5 @@
 ---
-title: Infrastructure Projects
+title: Computer vision
 author: Arno Bosse
 publication-date: 2022-01-22
 type: page
